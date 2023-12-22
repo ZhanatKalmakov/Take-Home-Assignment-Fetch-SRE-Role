@@ -1,0 +1,22 @@
+- name: fetch first service index page
+  url: http://mock-first:8001/
+  method: GET
+  headers:
+    user-agent: fetch-synthetic-monitor
+
+- name: fetch first service careers page
+  url: http://mock-first:8001/careers
+  method: GET
+  headers:
+    user-agent: fetch-synthetic-monitor
+
+- name: fetch second service example post endpoint
+  url: http://mock-second:8002/post-method/example
+  method: POST
+  headers:
+    content-type: application/json
+    user-agent: fetch-synthetic-monitor
+  body: '{"foo":"bar"}'
+
+- name: fetch second service index page
+  url: http://mock-second:8002

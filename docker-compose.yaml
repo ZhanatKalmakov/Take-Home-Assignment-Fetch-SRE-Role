@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  healthcheck:
+    build: .
+    volumes:
+      - ./config.yaml:/usr/src/app/config.yaml
+    depends_on:
+      - mock-first
+      - mock-second
+  
+  mock-first:
+    build: .
+    command: ["uvicorn", "mock_server:app", "--host", "mock-first", "--port", "8001"]
+    ports:
+      - 8001:8001
+
+  mock-second:
+    build: .
+    command: ["uvicorn", "mock_server:app", "--host", "mock-second", "--port", "8002"]
+    ports:
+      - 8002:8002
+
